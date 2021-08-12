@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="androidx.lifecycle.MutableLiveData" />
+        <variable
+            name="viewmodel"
+            type="com.newcompany.andesofttest.viewmodel.MainActivityViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="20dp"
+        tools:context=".fragments.FirstFragment">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvBookLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:text="Book Name:"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/etBookName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/etBookName"
+            app:layout_constraintBottom_toBottomOf="@+id/etBookName"
+           ></com.google.android.material.textview.MaterialTextView>
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etBookName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            app:layout_constrainedWidth="true"
+            android:orientation="horizontal"
+            app:layout_constraintRight_toRightOf="parent"
+            android:digits="ABCDEFGHIJKLMNOPqRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+            android:singleLine="true"
+            android:text="@={viewmodel.inputBookName}"
+            android:backgroundTint="@color/black"
+            app:layout_constraintLeft_toRightOf="@+id/tvBookLabel"
+            app:layout_constraintTop_toTopOf="parent"
+
+            ></com.google.android.material.textfield.TextInputEditText>
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvAutherLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/spnAuthorName"
+            app:layout_constraintBottom_toBottomOf="@+id/spnAuthorName"
+            android:text="Author Name:"
+            app:layout_constraintTop_toBottomOf="@+id/tvBookLabel"
+            ></com.google.android.material.textview.MaterialTextView>
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/spnAuthorName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:spinnerMode="dropdown"
+            app:layout_constraintRight_toRightOf="parent"
+            app:entries="@{viewmodel.quantityEntries}"
+            app:selectedValue="@={viewmodel.inputAuthorName}"
+            style="@style/Widget.AppCompat.Spinner.Underlined"
+            app:layout_constraintLeft_toRightOf="@+id/tvAutherLabel"
+            app:layout_constraintTop_toBottomOf="@+id/etBookName"></androidx.appcompat.widget.AppCompatSpinner>
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvPriceLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/etPrice"
+            app:layout_constraintBottom_toBottomOf="@+id/etPrice"
+            app:layout_constraintTop_toBottomOf="@+id/tvAutherLabel"
+            android:text="Price:"
+            ></com.google.android.material.textview.MaterialTextView>
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etPrice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:singleLine="true"
+            android:inputType="phone"
+            android:text="@={viewmodel.inputPrice}"
+            android:backgroundTint="@color/black"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/tvPriceLabel"
+
+            app:layout_constraintTop_toBottomOf="@+id/spnAuthorName"></com.google.android.material.textfield.TextInputEditText>
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvDOI"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/etDOI"
+            app:layout_constraintBottom_toBottomOf="@+id/etDOI"
+            app:layout_constraintTop_toBottomOf="@+id/tvPriceLabel"
+            android:text="DOI:"
+            ></com.google.android.material.textview.MaterialTextView>
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etDOI"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:singleLine="true"
+            android:inputType="phone"
+            android:clickable="false"
+            android:focusableInTouchMode="false"
+            android:text="@={viewmodel.DOI}"
+            android:backgroundTint="@color/black"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/tvPriceLabel"
+            app:layout_constraintTop_toBottomOf="@+id/etPrice"></com.google.android.material.textfield.TextInputEditText>
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvThumbCover"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/uploadMultipleImages"
+            app:layout_constraintTop_toBottomOf="@+id/tvDOI"
+            app:layout_constraintBottom_toBottomOf="@+id/uploadMultipleImages"
+            android:text="Thumb Cover:"
+            ></com.google.android.material.textview.MaterialTextView>
+        <ImageButton
+            android:id="@+id/uploadMultipleImages"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:src="@android:drawable/ic_menu_upload"
+            app:layout_constraintBottom_toTopOf="@+id/button_first"
+            app:layout_constraintLeft_toLeftOf="@+id/button_first"
+            app:layout_constraintRight_toRightOf="@+id/button_first"
+            app:layout_constraintLeft_toRightOf="@+id/tvThumbCover"
+            app:layout_constraintTop_toBottomOf="@+id/etDOI"
+            ></ImageButton>
+
+
+        <Button
+            android:id="@+id/button_first"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="50dp"
+            android:background="@color/design_default_color_primary_variant"
+            android:onClick="@{()->viewmodel.onSaveButtonClick()}"
+            android:text="@={viewmodel.save}"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/uploadMultipleImages"
+            />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
