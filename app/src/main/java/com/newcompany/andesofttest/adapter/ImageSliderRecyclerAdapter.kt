@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.newcompany.andesofttest.R
 import com.newcompany.andesofttest.databinding.ImageSliderItemsBinding
+import com.squareup.picasso.Picasso
 
 class ImageSliderRecyclerAdapter(userlist: ArrayList<String>, private val clickListener: (String) -> Unit):
     RecyclerView.Adapter<ImageSliderRecyclerAdapter.UserViewHolder>() {
@@ -38,7 +39,7 @@ class ImageSliderRecyclerAdapter(userlist: ArrayList<String>, private val clickL
             binding.apply {
 
 
-                Glide.with(binding.root).load(Uri.parse(user)).into(thumbImageSlider)
+                Picasso.with(binding.root.context).load(Uri.parse(user)).into(thumbImageSlider);
 
 
 
